@@ -1,4 +1,4 @@
-=== Clean Media Library Filenames ===
+=== Clean Media Library File Names ===
 Contributors: webdeveric
 Tags: media library, filename, sanitize, special characters
 Requires at least: 3.0.0
