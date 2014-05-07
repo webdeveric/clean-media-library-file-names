@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: Clean Media Library Filenames
+Plugin Name: Clean Media Library File Names
 Plugin Group: Media Library
 Plugin URI: http://phplug.in/
 Version: 0.2
