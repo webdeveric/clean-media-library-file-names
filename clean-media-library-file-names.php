@@ -24,7 +24,7 @@ array(4) {
 
 defined('ABSPATH') || die('What are you doing? You\'re not allowed back here!');
 
-function wde_clean_media_library_filenames(array $data, $file, $filename, $mimes)
+function wde_clean_media_library_file_names(array $data, $file, $filename, $mimes)
 {
     if (isset($data['ext'])) {
         $data['proper_filename'] = sanitize_title_with_dashes(
@@ -35,4 +35,4 @@ function wde_clean_media_library_filenames(array $data, $file, $filename, $mimes
     }
     return $data;
 }
-add_filter('wp_check_filetype_and_ext', 'wde_clean_media_library_filenames', 10, 4);
+add_filter('wp_check_filetype_and_ext', 'wde_clean_media_library_file_names', 10, 4);
