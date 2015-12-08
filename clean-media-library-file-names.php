@@ -3,7 +3,7 @@
 Plugin Name: Clean Media Library File Names
 Plugin Group: Media Library
 Plugin URI: http://phplug.in/
-Version: 0.3
+Version: 0.3.1
 Description: This plugin cleans uploaded file names to remove special characters and spaces.
 Author: Eric King
 Author URI: http://webdeveric.com/
@@ -26,17 +26,19 @@ defined('ABSPATH') || exit;
 
 function wde_get_file_info( $file )
 {
-    if ( ! function_exists('finfo_file') )
+    if ( ! function_exists('finfo_file') ) {
         return false;
+    }
 
     $finfo = finfo_open( FILEINFO_MIME_TYPE );
     $mime  = finfo_file( $finfo, $file );
-    finfo_close($finfo);
+    finfo_close( $finfo );
 
     $extensions = array_search( $mime, wp_get_mime_types() );
 
-    if ( $extensions === false )
+    if ( $extensions === false ) {
         return false;
+    }
 
     $ext = explode('|', $extensions);
 
@@ -50,18 +52,19 @@ function wde_clean_media_library_file_names( array $data, $file, $filename, $mim
 {
     $clean_name = sanitize_file_name( $filename );
 
-    if ($filename === $clean_name) {
+    if ( $filename === $clean_name ) {
         return $data;
     }
 
     if ( $data['ext'] === false || $data['type'] === false ) {
-        $data = array_merge(
-            $data,
-            wde_get_file_info( $file )
-        );
+        $info = wde_get_file_info( $file );
+
+        if ( $info !== false ) {
+            $data = array_merge( $data, $info );
+        }
     }
 
-    if ($clean_name == '' || $clean_name == $data['ext'] ) {
+    if ( $clean_name == '' || $clean_name == $data['ext'] ) {
 
         if ( $data['ext'] !== false ) {
 
@@ -79,4 +82,5 @@ function wde_clean_media_library_file_names( array $data, $file, $filename, $mim
 
     return $data;
 }
-add_filter('wp_check_filetype_and_ext', 'wde_clean_media_library_file_names', 10, 4);
+
+add_filter( 'wp_check_filetype_and_ext', 'wde_clean_media_library_file_names', 10, 4 );
