@@ -2,8 +2,8 @@
 Contributors: webdeveric
 Tags: media library, filename, sanitize, special characters
 Requires at least: 3.0.0
-Tested up to: 4.0.0
-Stable tag: 0.3
+Tested up to: 4.4.0
+Stable tag: 0.3.1
 
 This plugin cleans uploaded file names to remove special characters and spaces.
 
