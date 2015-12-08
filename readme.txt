@@ -19,6 +19,9 @@ This plugin cleans uploaded file names to remove special characters and spaces.
 
 == Changelog ==
 
+= 0.3.1 =
+* Works with WordPress 4.4
+
 = 0.3 =
 * Added default file name when the sanitized file name is blank. This could happen when the file name contains only special characters.
 
